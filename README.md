@@ -1,14 +1,8 @@
-爬虫框架设计
-------
+# 爬虫框架设计
 
- 1. 设计
+ > 爬虫生命周期：下载、处理、管理和持久化等功能。 spider控制组件，让它们可以互相交互，流程化的执行。
 
-----------
-
- 爬虫生命周期：下载、处理、管理和持久化等功能。 spider控制组件，让它们可以互相交互，流程化的执行。
- 2. 结构
-----------
-
+## 组件
 **Download**
 负责从互联网上下载页面，以便后续处理。
 **PageProcess**
@@ -19,10 +13,9 @@
 ResultOutput负责抽取结果的处理，包括计算、持久化到文件、数据库等。
  
  
- 3. 使用
+ ## 使用
 
-----------
-```
+```java
 public static void main(String[] args) {
     Spider.create(new GithubProcessor())
             .addUrl("https://github.com/junicore")
@@ -36,4 +29,4 @@ public static void main(String[] args) {
             .run();
 }
 ```
-一般来说，对于编写一个爬虫，PageProcessor是需要编写的部分，而Spider则是创建和控制爬虫的入口。定制PageProcessr来编写一个爬虫，并通过Spider来启动。
+> 一般来说，对于编写一个爬虫，PageProcessor是需要编写的部分，而Spider则是创建和控制爬虫的入口。定制PageProcessr来编写一个爬虫，并通过Spider来启动。
